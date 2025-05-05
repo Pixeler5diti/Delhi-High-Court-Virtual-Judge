@@ -19,8 +19,8 @@ except ImportError:
 
 # Import other dependencies
 from utils.pdf_processor import extract_text_from_pdf
-from utils.vector_store import VectorStore
-from utils.judgment_predictor import predict_judgment
+from utils2.vector_store import VectorStore
+from utils2.judgment_predictor import predict_judgment
 from utils.visualization import plot_case_similarity
 
 # Set page configuration
@@ -733,6 +733,7 @@ elif st.session_state.active_tab == "Analysis":
         st.info("Please upload a document in the 'Upload' tab to see similar cases.")
     else:
         # Display similar cases
+        print(st.session_state.similar_cases)
         for i, case in enumerate(st.session_state.similar_cases):
             with st.container():
                 col1, col2 = st.columns([3, 1])
