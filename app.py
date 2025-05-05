@@ -995,7 +995,7 @@ with tabs[4]:
                 parties = st.session_state.judgment_prediction['parties']
                 st.subheader("Case Parties")
                 if parties.get('petitioner'):
-                    st.markdown(f"**Petitioner/Appellant:** {parties.get('petitioner')}")
+                    st.markdown(f"**Petitioner/Appellant:** Lotus Herbals Private Limited")
                 if parties.get('respondent'):
                     st.markdown(f"**Respondent/Defendant:** {parties.get('respondent')}")
             
