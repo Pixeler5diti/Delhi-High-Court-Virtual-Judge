@@ -495,6 +495,187 @@ with tabs[4]:
             
             # Generate unique HTML for the speaking judge
             judge_html = """
+            <style>
+    body {
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #dda070;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%2335281e"/><path d="M0 0L100 100M20 0L100 80M40 0L100 60M60 0L100 40M80 0L100 20M0 20L80 100M0 40L60 100M0 60L40 100M0 80L20 100" stroke="%23291f17" stroke-width="1" fill="none"/></svg>');
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 800px;
+      
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Speaking Judge</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f4f8;
+      background-image: linear-gradient(to bottom, #e6ebf0, #f0f4f8);
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 800px;
+      width: 100%;
+    }
+    
+    .judge-container {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+    }
+    
+    #judge-component {
+  position: relative;
+}
+
+.speech-bubble {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px;
+  width: 200px;
+  min-height: 80px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 10;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+}
+
+    
+    .speech-bubble:before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 15px 15px 15px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+    
+    .controls {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      font-family: 'Georgia', serif;
+    }
+    
+    button {
+      padding: 12px 20px;
+      background-color: #3a3a8c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    button:hover {
+      background-color: #2a2a6c;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    .mouth {
+      transition: all 0.1s ease;
+    }
+    
+    .judge-robe {
+      fill: #000022;
+      stroke: #333;
+      stroke-width: 1;
+    }
+    
+    .judge-face {
+      fill: #f8d5c2;
+      stroke: #d4b6a0;
+      stroke-width: 0.5;
+    }
+    
+    .judge-hair {
+      fill: #f8d5c2;
+      stroke: #f8d5c2;
+      stroke-width: 0.5;
+    }
+    
+    .judge-gavel {
+      fill: #8b4513;
+      stroke: #5c2c0d;
+      stroke-width: 0.5;
+    }
+    
+    .judge-gavel-handle {
+      fill: #5c2c0d;
+      stroke: #3d1d08;
+      stroke-width: 0.5;
+    }
+    
+    .judge-collar {
+      fill: white;
+      stroke: #eee;
+      stroke-width: 0.5;
+    }
+    
+    .status {
+      margin-top: 10px;
+      font-style: italic;
+      color: #f4eaea;
+    }
+    
+    h1 {
+      color: #d9d5d5;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
             <div class="judge-container">
               <div id="judge-component">
                 <svg id="judgeSvg" width="300" height="400" viewBox="0 0 300 400">
@@ -539,7 +720,7 @@ with tabs[4]:
                   
                   <!-- Judge's Black Judicial Wig -->
                   <!-- Wig Base -->
-                  <path class="judge-hair" d="M100 70 Q100 40 150 40 Q200 40 200 70 L200 120 Q200 130 190 130 L110 130 Q100 130 100 120 Z" fill="#111" stroke="#333" stroke-width="0.5" />
+                  <path class="judge-hair" d="M100 70 Q100 40 150 40 Q200 40 200 70 L200 120 Q200 130 190 130 L110 130 Q100 130 100 120 Z" fill="#f8d5c2" stroke="#d4b6a0" stroke-width="0.5" />
                   
                   <!-- Wig Curls - Top -->
                   <path d="M105 50 Q110 40 115 50 Q120 40 125 50 Q130 40 135 50 Q140 40 145 50 Q150 40 155 50 Q160 40 165 50 Q170 40 175 50 Q180 40 185 50 Q190 40 195 50" fill="#222" stroke="#333" stroke-width="0.5" />
