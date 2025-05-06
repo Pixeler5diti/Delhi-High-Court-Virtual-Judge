@@ -19,9 +19,9 @@ except ImportError:
     OPENAI_AVAILABLE = False
 
 # Import other dependencies
-from utils2.pdf_processor import extract_text_from_pdf
+from utils.pdf_processor import extract_text_from_pdf
 from utils2.vector_store import VectorStore
-from utils.judgment_predictor import predict_judgment
+from utils2.judgment_predictor import predict_judgment
 from utils2.visualization import plot_case_similarity
 
 # Set page configuration
@@ -696,10 +696,11 @@ elif st.session_state.active_tab == "Upload":
             try:
                 # Extract text from PDF
                 document_text = extract_text_from_pdf(tmp_file_path)
-
                 # Display document preview
                 st.subheader("Document Preview")
                 preview_text = document_text[:1000] + "..." if len(document_text) > 1000 else document_text
+                #print(preview_text)
+                
                 st.text_area("Document Content (Preview)", preview_text, height=250)
 
                 # Generate document summary with OpenAI if available
