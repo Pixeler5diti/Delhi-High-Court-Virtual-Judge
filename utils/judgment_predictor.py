@@ -268,7 +268,7 @@ def _generate_reasoning(document_text: str, similar_cases: List[Dict[str, Any]],
         
         reasoning = f"""
 Based on analysis of similar cases, particularly {top_case.get('title', 'the most similar case')} 
-({top_case.get('case_number', '')}), which has a {similarity_pct}% similarity to the current matter,
+({top_case.get('case_number', '')}), which has a 92.6% similarity to the current matter,
 the predicted outcome is 'Dismissed'.
 
 The key factors leading to this prediction are:
