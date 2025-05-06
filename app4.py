@@ -1267,7 +1267,12 @@ elif st.session_state.active_tab == "Judge":
             
             # Inject HTML component into the Streamlit app
             components.html(judge_html, height=500)
-            
+            st.header("Prediction")
+            st.text(prediction['prediction'])
+            st.header("Confidence Score")
+            st.text(str(prediction['confidence'])[:5])
+            st.header("Key reasoning")
+            st.text(prediction['reasoning'])
             # Display enhanced analysis if available
             if 'enhanced_analysis' in st.session_state and st.session_state.enhanced_analysis:
                 enhanced = st.session_state.enhanced_analysis
