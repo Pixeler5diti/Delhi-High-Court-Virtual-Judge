@@ -785,7 +785,7 @@ elif st.session_state.active_tab == "Judge":
         st.info("Please upload a document in the 'Upload' tab to see judgment predictions.")
     else:
         prediction = st.session_state.judgment_prediction
-        print(prediction)
+
         # Summary, Legal Analysis, Confidence tabs
         pred_tab1, pred_tab2, pred_tab3 = st.tabs(["Summary", "Legal Analysis", "Confidence Assessment"])
         
@@ -799,7 +799,7 @@ elif st.session_state.active_tab == "Judge":
             Prediction: {prediction['prediction']}
             Confidence Score: {prediction['confidence']:.2f}
             
-            Key reasoning: {prediction['reasoning'][:200]}...
+            Key reasoning: {prediction['reasoning']}...
             """
             
             # Judge animation HTML
@@ -1292,13 +1292,16 @@ elif st.session_state.active_tab == "Judge":
             st.write(prediction['liability_determination'])
             
             st.subheader("Similar Precedents")
-            for precedent in prediction['similar_precedents']:
+            print(prediction['precedents'])
+            print(st.session_state.similar_cases)
+            for precedent in prediction['precedents']:
                 # Find matching case
                 matching_case = next((case for case in st.session_state.similar_cases 
-                                     if case['case_id'] == precedent['case_id']), None)
+                                     if case['title'] == precedent['case'][:-3]), None)
+                print(matching_case)
                 if matching_case:
                     st.write(f"**{matching_case['title']}**")
-                    st.caption(f"Case ID: {precedent['case_id']} | Relevance: {precedent['relevance']:.2f}")
+                    st.caption(f"Case ID: {precedent['case'][:-3]} | Relevance: {precedent['relevance']}")
         
         with pred_tab3:
             # Confidence Assessment
