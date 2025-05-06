@@ -21,7 +21,7 @@ except ImportError:
 # Import other dependencies
 from utils2.pdf_processor import extract_text_from_pdf
 from utils2.vector_store import VectorStore
-from utils2.judgment_predictor import predict_judgment
+from utils.judgment_predictor import predict_judgment
 from utils2.visualization import plot_case_similarity
 
 # Set page configuration
